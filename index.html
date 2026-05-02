@@ -3,107 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Step Ordering — Delicious Food Delivered</title>
+  <title>Step Ordering</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lato:wght@400;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <header class="header" id="header">
+  <!-- HEADER -->
+  <header id="header" class="header">
     <div class="header-inner">
-      <a href="#" class="logo">
+      <div class="logo">
         <span class="logo-step">Step</span>
         <span class="logo-ordering">Ordering</span>
-      </a>
+      </div>
       <nav class="nav">
-        <a href="#" class="nav-link active">Home</a>
-        <a href="#categories" class="nav-link">Menu</a>
-        <a href="#" class="nav-link">About</a>
-        <button class="cart-btn" id="cartBtn">
-          <svg class="scooter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/>
-            <path d="M6 18h8l3-9h4M9 9h6l-2 9"/>
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" id="cartBtn" class="cart-btn">
+          Cart
+          <span id="cartCount">0</span>
+          <svg class="scooter-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="white">
+            <circle cx="14" cy="48" r="7" stroke="white" stroke-width="3" fill="none"/>
+            <circle cx="50" cy="48" r="7" stroke="white" stroke-width="3" fill="none"/>
+            <path d="M21 48 H43" stroke="white" stroke-width="3"/>
+            <path d="M50 41 L42 22 L28 22 L21 34 L14 34" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M28 22 L26 16 L36 16" stroke="white" stroke-width="3" stroke-linecap="round"/>
+            <path d="M42 22 L50 22 L50 30" stroke="white" stroke-width="3" stroke-linecap="round"/>
           </svg>
-          <span>Cart</span>
-          <span class="cart-count" id="cartCount">0</span>
-        </button>
+        </a>
       </nav>
     </div>
   </header>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <span class="hero-eyebrow">Welcome to Step Ordering</span>
-      <h1>Fast & Efficient<br/><span class="accent">Online Ordering</span> You Must Try.</h1>
-      <p class="hero-sub">Fresh ingredients, bold flavors, delivered to your door in minutes.</p>
-      <a href="#categories" class="hero-cta">Order Now →</a>
+      <h1>Fast And Efficient, Online Ordering You Must Try.</h1>
     </div>
   </section>
 
-  <section class="categories" id="categories">
+  <!-- CATEGORIES -->
+  <section class="categories">
     <h2 class="categories-title">Categories</h2>
-
-    <div class="category-tabs" id="categoryTabs">
-    </div>
-
-    <hr class="divider" />
-
+    <div id="categoryTabs" class="category-tabs"></div>
+    <div class="divider"></div>
     <div class="content-row">
-      <aside class="filter-box">
+      <!-- FILTER -->
+      <div class="filter-box">
         <div class="filter-header">
           <span>Filter</span>
-          <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 6h18M6 12h12M10 18h4"/>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="filter-icon">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
           </svg>
         </div>
         <div class="filter-body">
-          <div>
-            <p class="spiciness-label">Spiciness: <span id="spiceVal">Not Chosen</span></p>
-            <div class="slider-wrap">
-              <input type="range" min="0" max="5" value="0" class="spiciness-slider" id="spiceSlider"/>
-            </div>
+          <div id="spiceVal" class="spiciness-label">Not Chosen</div>
+          <div class="slider-wrap">
+            <input id="spiceSlider" type="range" min="0" max="5" value="0" class="spiciness-slider" />
           </div>
-
           <label class="checkbox-label">
-            <input type="checkbox" id="noNuts"/> No Nuts
+            <input id="noNuts" type="checkbox" /> No Nuts
           </label>
           <label class="checkbox-label">
-            <input type="checkbox" id="vegOnly"/> Vegetarian Only
+            <input id="vegOnly" type="checkbox" /> Vegetarian Only
           </label>
-
-          <button class="btn-reset" id="btnReset">RESET</button>
-          <button class="btn-apply" id="btnApply">APPLY FILTER</button>
+          <button id="btnReset" class="btn-reset">RESET</button>
+          <button id="btnApply" class="btn-apply">APPLY FILTER</button>
         </div>
-      </aside>
-
-      <div class="cards-grid" id="cardsGrid">
       </div>
+
+      <!-- MENU CARDS -->
+      <div id="cardsGrid" class="cards-grid"></div>
     </div>
   </section>
 
-  <div class="modal-overlay" id="modalOverlay"></div>
-  <div class="product-modal" id="productModal" role="dialog" aria-modal="true">
-    <button class="modal-close" id="modalClose" aria-label="Close">×</button>
-    <div class="modal-body" id="modalBody"></div>
-  </div>
-
-  <div class="cart-overlay" id="cartOverlay"></div>
-  <aside class="cart-drawer" id="cartDrawer">
-    <div class="cart-head">
-      <h3>Your Cart</h3>
-      <button class="cart-close" id="cartClose">×</button>
-    </div>
-    <div class="cart-items" id="cartItems"></div>
-    <div class="cart-foot">
-      <div class="cart-total"><span>Total</span><span id="cartTotal">$0</span></div>
-      <button class="checkout-btn">Checkout</button>
-    </div>
-  </aside>
-
   <footer class="footer">
-    © Step Ordering 2026, All rights reserved
+    <p>© Step Ordering 2026, All rights reserved</p>
   </footer>
+
+  <!-- CART DRAWER -->
+  <div id="cartDrawer" class="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="cartClose">&times;</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div>Total: <span id="cartTotal">$0.00</span></div>
+    </div>
+  </div>
+  <div id="cartOverlay" class="cart-overlay"></div>
+
+  <!-- PRODUCT MODAL -->
+  <div id="productModal" class="modal">
+    <div id="modalOverlay" class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button id="modalClose">&times;</button>
+      </div>
+      <div id="modalBody" class="modal-body"></div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
